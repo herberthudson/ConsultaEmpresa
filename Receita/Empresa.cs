@@ -19,6 +19,7 @@ namespace Receita
 
         public string Fantasia { get; set; }
         public string RazaoSocial { get; set; }
+        public string NaturezaJurica { get; set; }
         public AtividadeEconomica AtividadePrincipal { get; set; }
         public List<AtividadeEconomica> AtividadeSecundarias { get; set; }
 

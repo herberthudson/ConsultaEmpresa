@@ -203,5 +203,26 @@ namespace ReceitaTest
             }
         }
 
+        [Test]
+        public void TestNaturezaJuridica()
+        {
+            _empresa.NaturezaJurica = "Natureza Jurídica";
+
+            Assert.AreEqual("Natureza Jurídica", _empresa.NaturezaJurica);
+        }
+
+        [Test]
+        public void TestNaturezaJuridicaVazio()
+        {
+            _empresa.NaturezaJurica = "";
+
+            Assert.AreEqual(string.Empty, _empresa.NaturezaJurica);
+        }
+
+        [Test]
+        public void TestEndereco()
+        {
+
+        }
     }
 }
