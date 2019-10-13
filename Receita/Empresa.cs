@@ -12,24 +12,15 @@ namespace Receita
         private const string FILIAL = "FILIAL";
 
         private Cnpj _cnpj;
-        private string _tipo;
-        private string _abertura;
-        private string _razao_social;
-        private string _fantasia;
+        private string tipo;
+        private string abertura;
+        private AtividadeEconomica atividadePrincipal;
+        private List<AtividadeEconomica> atividadeSecundarias;
 
-        public string Fantasia
-        {
-            get { return _fantasia; }
-            set { _fantasia = value; }
-        }
-
-
-        public string RazaoSocial
-        {
-            get { return _razao_social; }
-            set { _razao_social = value; }
-        }
-
+        public string Fantasia { get; set; }
+        public string RazaoSocial { get; set; }
+        public AtividadeEconomica AtividadePrincipal { get; set; }
+        public List<AtividadeEconomica> AtividadeSecundarias { get; set; }
 
         /// <summary>
         /// Definição da Empresa sem parâmetros
@@ -43,23 +34,23 @@ namespace Receita
 
         public string Abertura
         {
-            get { return _abertura; }
+            get { return abertura; }
             set {
                 if (string.IsNullOrEmpty(value))
                 {
-                    _abertura = string.Empty;
+                    abertura = string.Empty;
                 }
                 else
                 {
                     string data_sem_formato = Regex.Replace(value.ToString(), "[^0-9]", "");
-                    _abertura = string.Format($"{data_sem_formato.Substring(0,2)}/{data_sem_formato.Substring(2,2)}/{data_sem_formato.Substring(4)}");
+                    abertura = string.Format($"{data_sem_formato.Substring(0,2)}/{data_sem_formato.Substring(2,2)}/{data_sem_formato.Substring(4)}");
                 }
             }
         }
 
         public string Tipo
         {
-            get { return _tipo; }
+            get { return tipo; }
             set {
                 IList tipos = new List<string>()
                 {
@@ -67,14 +58,11 @@ namespace Receita
                     FILIAL
                 };
 
-                _tipo = tipos.Contains(value.ToUpper()) ? value.ToUpper() : string.Empty;
+                tipo = tipos.Contains(value.ToUpper()) ? value.ToUpper() : string.Empty;
             }
         }
 
-        public Cnpj Cnpj()
-        {
-            return _cnpj;
-        }
+        public Cnpj Cnpj() => _cnpj;
 
         public Cnpj Cnpj(string cnpj)
         {
