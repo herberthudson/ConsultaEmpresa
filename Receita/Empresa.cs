@@ -19,6 +19,13 @@ namespace Receita
         private Endereco endereco;
         private string email;
         private string telefone;
+        private string efr;
+        private string situacao;
+        private string dataSituacao;
+        private string motivoSituacao;
+        private string situacaoEspecial;
+        private string dataSituacaoEspecial;
+        private string capitalSocial;
 
         public string Fantasia { get; set; }
         public string RazaoSocial { get; set; }
@@ -34,6 +41,48 @@ namespace Receita
         public Empresa(string cnpj)
         {
             this.Cnpj(cnpj);
+        }
+
+        public string CapitalSocial
+        {
+            get { return capitalSocial; }
+            set { capitalSocial = value; }
+        }
+
+        public string DataSituacaoEspecial
+        {
+            get { return dataSituacaoEspecial; }
+            set { dataSituacaoEspecial = formata_data(value.ToString()); }
+        }
+
+        public string SituacaoEspecial
+        {
+            get { return situacaoEspecial; }
+            set { situacaoEspecial = value; }
+        }
+
+        public string MotivoSituacao
+        {
+            get { return motivoSituacao; }
+            set { motivoSituacao = value; }
+        }
+
+        public string DataSituacao
+        {
+            get { return dataSituacao; }
+            set { dataSituacao = formata_data(value.ToString()); }
+        }
+
+        public string Efr
+        {
+            get { return efr; }
+            set { efr = value; }
+        }
+
+        public string Situacao
+        {
+            get { return situacao; }
+            set { situacao = value; }
         }
 
         public string Telefone
@@ -72,17 +121,24 @@ namespace Receita
         public string Abertura
         {
             get { return abertura; }
-            set {
-                if (string.IsNullOrEmpty(value))
-                {
-                    abertura = string.Empty;
-                }
-                else
-                {
-                    string data_sem_formato = Regex.Replace(value.ToString(), "[^0-9]", "");
-                    abertura = string.Format($"{data_sem_formato.Substring(0,2)}/{data_sem_formato.Substring(2,2)}/{data_sem_formato.Substring(4)}");
-                }
+            set { abertura = formata_data(value.ToString()); }
+        }
+
+        private string formata_data(string data)
+        {
+            string data_formatada;
+
+            if (string.IsNullOrEmpty(data))
+            {
+                data_formatada = string.Empty;
             }
+            else
+            {
+                string data_sem_formato = Regex.Replace(data.ToString(), "[^0-9]", "");
+                data_formatada = string.Format($"{data_sem_formato.Substring(0, 2)}/{data_sem_formato.Substring(2, 2)}/{data_sem_formato.Substring(4)}");
+            }
+
+            return data_formatada;
         }
 
         public string Tipo

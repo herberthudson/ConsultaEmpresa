@@ -112,7 +112,7 @@ namespace ReceitaTest
         public void TestDataDeAberturaDash()
         {
             _empresa.Abertura = "06-09-2000";
-            Console.WriteLine(_empresa.Abertura);
+
             Assert.AreEqual(ABERTURA, _empresa.Abertura);
         }
 
@@ -249,6 +249,124 @@ namespace ReceitaTest
             _empresa.Telefone = "";
 
             Assert.AreEqual(string.Empty, _empresa.Telefone);
+        }
+
+        [Test]
+        public void TestEfr()
+        {
+            _empresa.Efr = "Ente Federativo Responsavel";
+
+            Assert.AreEqual("Ente Federativo Responsavel", _empresa.Efr);
+        }
+
+        [Test]
+        public void TestEfrVazio()
+        {
+            _empresa.Efr = "";
+
+            Assert.AreEqual(string.Empty, _empresa.Efr);
+        }
+
+        [Test]
+        public void TestSituacao()
+        {
+            _empresa.Situacao = "Ativo";
+
+            Assert.AreEqual("Ativo", _empresa.Situacao);
+        }
+
+        [Test]
+        public void TestSituacaoVazio()
+        {
+            _empresa.Situacao = "";
+
+            Assert.AreEqual(string.Empty, _empresa.Situacao);
+        }
+
+        [Test]
+        public void TestDataSituacaoSemFormatacao()
+        {
+            _empresa.DataSituacao = "06092000";
+
+            Assert.AreEqual(ABERTURA, _empresa.DataSituacao);
+        }
+
+        [Test]
+        public void TestDataSituacaoDash()
+        {
+            _empresa.DataSituacao = "06-09-2000";
+            Assert.AreEqual(ABERTURA, _empresa.DataSituacao);
+        }
+
+        [Test]
+        public void TestDataSituacaoSlash()
+        {
+            _empresa.DataSituacao = "06/09/2000";
+
+            Assert.AreEqual(ABERTURA, _empresa.DataSituacao);
+        }
+
+        [Test]
+        public void TestMotivoSituacao()
+        {
+            _empresa.MotivoSituacao = "Motivo da Situacao";
+
+            Assert.AreEqual("Motivo da Situacao", _empresa.MotivoSituacao);
+        }
+
+        [Test]
+        public void TestMotivoSituacaoVazio()
+        {
+            _empresa.MotivoSituacao = "";
+
+            Assert.AreEqual(string.Empty, _empresa.MotivoSituacao);
+        }
+
+        [Test]
+        public void TestSituacaoEspecial()
+        {
+            _empresa.SituacaoEspecial = "Situação Especial";
+
+            Assert.AreEqual("Situação Especial", _empresa.SituacaoEspecial);
+        }
+
+        [Test]
+        public void TestSituacaoEspecialVazio()
+        {
+            _empresa.SituacaoEspecial = "";
+
+            Assert.AreEqual(string.Empty, _empresa.SituacaoEspecial);
+        }
+
+        [Test]
+        public void TestDataSituacaoEspecialSemFormatacao()
+        {
+            _empresa.DataSituacaoEspecial = "06092000";
+
+            Assert.AreEqual(ABERTURA, _empresa.DataSituacaoEspecial);
+        }
+
+        [Test]
+        public void TestDataSituacaoEspecialDash()
+        {
+            _empresa.DataSituacaoEspecial = "06-09-2000";
+            Assert.AreEqual(ABERTURA, _empresa.DataSituacaoEspecial);
+        }
+
+        [Test]
+        public void TestDataSituacaoEspecialSlash()
+        {
+            _empresa.DataSituacaoEspecial = "06/09/2000";
+
+            Assert.AreEqual(ABERTURA, _empresa.DataSituacaoEspecial);
+        }
+
+        [Test]
+        public void TestCapitalSocial()
+        {
+            _empresa.CapitalSocial = "0.00";
+
+            Assert.AreEqual("0.00", _empresa.CapitalSocial);
         }
     }
 }
