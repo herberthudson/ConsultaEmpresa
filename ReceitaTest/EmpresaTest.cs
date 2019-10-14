@@ -368,5 +368,21 @@ namespace ReceitaTest
 
             Assert.AreEqual("0.00", _empresa.CapitalSocial);
         }
+
+        [Test]
+        public void TestExtra()
+        {
+            _empresa.Extra = "Extra";
+
+            Assert.AreEqual("Extra", _empresa.Extra);
+        }
+
+        [Test]
+        public void TestExtraVazio()
+        {
+            _empresa.Extra = "";
+
+            Assert.AreEqual(string.Empty, _empresa.Extra);
+        }
     }
 }

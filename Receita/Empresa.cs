@@ -11,7 +11,7 @@ namespace Receita
         private const string MATRIZ = "MATRIZ";
         private const string FILIAL = "FILIAL";
 
-        private Cnpj _cnpj;
+        private Cnpj cnpj;
         private string tipo;
         private string abertura;
         private AtividadeEconomica atividadePrincipal;
@@ -26,6 +26,7 @@ namespace Receita
         private string situacaoEspecial;
         private string dataSituacaoEspecial;
         private string capitalSocial;
+        private string extra;
 
         public string Fantasia { get; set; }
         public string RazaoSocial { get; set; }
@@ -38,9 +39,29 @@ namespace Receita
         /// </summary>
         public Empresa(){}
 
-        public Empresa(string cnpj)
+        public Empresa(string _cnpj, string _tipo, string _abertura, string _razao_social, string _fantasia, 
+            AtividadeEconomica _atividade_principal, List<AtividadeEconomica> _atividades_secundarias, Endereco _endereco,
+            string _natureza_juridica = "", string _email = "", string _telefone = "", string _efr = "", string _situacao = "")
         {
-            this.Cnpj(cnpj);
+            this.Cnpj(_cnpj);
+            this.Tipo = _tipo;
+            this.Abertura = _abertura;
+            this.RazaoSocial = _razao_social;
+            this.Fantasia = _fantasia;
+            this.AtividadePrincipal = _atividade_principal;
+            this.AtividadeSecundarias = _atividades_secundarias;
+            this.NaturezaJurica = _natureza_juridica;
+            this.Endereco = _endereco;
+            this.Email = _email;
+            this.Telefone = _telefone;
+            this.Efr = _efr;
+            this.Situacao = _situacao;
+        }
+
+        public string Extra
+        {
+            get { return extra; }
+            set { extra = value; }
         }
 
         public string CapitalSocial
@@ -155,14 +176,14 @@ namespace Receita
             }
         }
 
-        public Cnpj Cnpj() => _cnpj;
+        public Cnpj Cnpj() => cnpj;
 
-        public Cnpj Cnpj(string cnpj)
+        public Cnpj Cnpj(string _cnpj)
         {
             ICheckCnpj checkCnpj = new CheckCnpj();
-            _cnpj = checkCnpj.ExtractAndCheckCnpj(cnpj);
+            cnpj = checkCnpj.ExtractAndCheckCnpj(_cnpj);
 
-            return _cnpj;
+            return cnpj;
         }
 
 
