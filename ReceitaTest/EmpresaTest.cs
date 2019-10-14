@@ -220,9 +220,35 @@ namespace ReceitaTest
         }
 
         [Test]
-        public void TestEndereco()
+        public void TestEmailValido()
         {
+            _empresa.Email = "example@example.com";
 
+            Assert.AreEqual("example@example.com", _empresa.Email);
+        }
+
+        [Test]
+        public void TestEmailInvalido()
+        {
+            _empresa.Email = "meuemail.com";
+
+            Assert.AreEqual(string.Empty, _empresa.Email);
+        }
+
+        [Test]
+        public void TestTelefoneValido()
+        {
+            _empresa.Telefone = "19 99999-9999";
+
+            Assert.AreEqual("19 99999-9999", _empresa.Telefone);
+        }
+
+        [Test]
+        public void TestTelefoneVazio()
+        {
+            _empresa.Telefone = "";
+
+            Assert.AreEqual(string.Empty, _empresa.Telefone);
         }
     }
 }

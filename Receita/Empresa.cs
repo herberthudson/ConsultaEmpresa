@@ -16,13 +16,16 @@ namespace Receita
         private string abertura;
         private AtividadeEconomica atividadePrincipal;
         private List<AtividadeEconomica> atividadeSecundarias;
+        private Endereco endereco;
+        private string email;
+        private string telefone;
 
         public string Fantasia { get; set; }
         public string RazaoSocial { get; set; }
         public string NaturezaJurica { get; set; }
         public AtividadeEconomica AtividadePrincipal { get; set; }
         public List<AtividadeEconomica> AtividadeSecundarias { get; set; }
-
+    
         /// <summary>
         /// Definição da Empresa sem parâmetros
         /// </summary>
@@ -31,6 +34,39 @@ namespace Receita
         public Empresa(string cnpj)
         {
             this.Cnpj(cnpj);
+        }
+
+        public string Telefone
+        {
+            get { return telefone; }
+            set { telefone = value; }
+        }
+
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+
+                Regex regEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                Match match = regEmail.Match(value);
+
+                if (match.Success)
+                {
+                    email = value;
+                }
+                else
+                {
+                    email = string.Empty;
+                }
+
+            }
+        }
+
+        public Endereco Endereco
+        {
+            get { return endereco; }
+            set { endereco = value; }
         }
 
         public string Abertura
@@ -72,9 +108,7 @@ namespace Receita
 
             return _cnpj;
         }
-   
 
 
-        
     }
 }
